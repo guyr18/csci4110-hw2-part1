@@ -48,6 +48,11 @@ int main( int argc, char **argv )
     // Simulate a number of time steps.
     double simulation_time = read_timer();
 	
+    // Setup bin properties.
+    double density = .0005;
+    double size = sqrt(density * n);
+    double binSize = size / numBins;
+
     omp_set_num_threads(16);
 
     #pragma omp parallel private(dmin)
@@ -60,10 +65,6 @@ int main( int argc, char **argv )
 	    navg = 0;
         davg = 0.0;
 	    dmin = 1.0;
-    
-        double density = .0005;
-        double size = sqrt(density * n);
-        double binSize = size / numBins;
 
         // Create a matrix grid to hold bins.
         grid_t grid;

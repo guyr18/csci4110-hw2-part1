@@ -48,16 +48,17 @@ int main( int argc, char **argv )
     // Simulate a number of time steps.
     double simulation_time = read_timer();
 	
+    // Setup bin properties.
+    double density = .0005;
+    double size = sqrt(density * n);
+    double binSize = size / numBins;
+
     for(int step = 0; step < NSTEPS; step++)
     {
 
 	    navg = 0;
         davg = 0.0;
 	    dmin = 1.0;
-    
-        double density = .0005;
-        double size = sqrt(density * n);
-        double binSize = size / numBins;
 
         // Create a matrix grid to hold bins.
         grid_t grid;
